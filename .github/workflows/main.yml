@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  java:
+    name: Java/Gradle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+
+      # Special handling to test against Java 8:
+      # antlr version 4.10 requires Java 11 to run the antlr tool, but tests still need to run
+      # against Java 8 - that's being done here:
+      - name: Set up Java 8
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 8
+      - name: Configure env with Java 8 home
+        run:
+          echo "JAVA_8_HOME=$JAVA_HOME" >> $GITHUB_ENV
+      - name: Configure Java 8 home for Gradle
+        run: |
+          mkdir -p $HOME/.gradle
+          echo "org.gradle.java.installations.fromEnv=JAVA_8_HOME" >> $HOME/.gradle/gradle.properties
+
+      - name: Set up JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 11
+
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: --rerun-tasks assemble ${{ env.ADDITIONAL_GRADLE_OPTS }} check publishToMavenLocal --scan
+
+      - name: Capture test results
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: test-results
+          path: |
+            **/build/reports/*
+            **/build/test-results/*

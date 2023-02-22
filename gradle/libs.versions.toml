@@ -1,0 +1,21 @@
+[versions]
+junit = "5.9.2"
+nessieBuildPlugins = "0.2.19"
+shadowPlugin = "7.1.2"
+
+[bundles]
+junit-testing = ["assertj-core", "junit-jupiter-api", "junit-jupiter-params"]
+
+[libraries]
+assertj-core = { module = "org.assertj:assertj-core", version = "3.24.2" }
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine" }
+junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params" }
+
+[plugins]
+idea-ext = { id = "org.jetbrains.gradle.plugin.idea-ext", version = "1.1.7" }
+nessie-build-ide-integration = { id = "org.projectnessie.buildsupport.ide-integration", version.ref = "nessieBuildPlugins" }
+nessie-build-publishing = { id = "org.projectnessie.buildsupport.publishing", version.ref = "nessieBuildPlugins" }
+nexus-publish = { id = "io.github.gradle-nexus.publish-plugin", version = "1.2.0" }
+shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadowPlugin" }

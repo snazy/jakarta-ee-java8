@@ -1,0 +1,33 @@
+[submodule "subprojects/cdi"]
+	path = subprojects/cdi
+	url = https://github.com/jakartaee/cdi.git
+[submodule "subprojects/common-annotations-api"]
+	path = subprojects/common-annotations-api
+	url = https://github.com/jakartaee/common-annotations-api.git
+[submodule "subprojects/jax-ws-api"]
+	path = subprojects/jax-ws-api
+	url = https://github.com/jakartaee/jax-ws-api.git
+[submodule "subprojects/rest"]
+	path = subprojects/rest
+	url = https://github.com/jakartaee/rest.git
+[submodule "subprojects/servlet"]
+	path = subprojects/servlet
+	url = https://github.com/jakartaee/servlet.git
+[submodule "subprojects/validation"]
+	path = subprojects/validation
+	url = https://github.com/jakartaee/validation.git
+[submodule "subprojects/expression-language"]
+	path = subprojects/expression-language
+	url = https://github.com/jakartaee/expression-language.git
+[submodule "subprojects/jaxb-api"]
+	path = subprojects/jaxb-api
+	url = https://github.com/jakartaee/jaxb-api.git
+[submodule "subprojects/jaf-api"]
+	path = subprojects/jaf-api
+	url = https://github.com/jakartaee/jaf-api.git
+[submodule "subprojects/injection-api"]
+	path = subprojects/injection-api
+	url = https://github.com/eclipse-ee4j/injection-api.git
+[submodule "subprojects/interceptors"]
+	path = subprojects/interceptors
+	url = https://github.com/jakartaee/interceptors.git
